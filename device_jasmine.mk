@@ -44,10 +44,9 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     android.hardware.boot@1.0-impl \
     android.hardware.boot@1.0-service \
-    bootctrl.sdm660 \
+    bootctrl.sdm660
 
 PRODUCT_STATIC_BOOT_CONTROL_HAL := \
-    bootctrl.sdm660 \
     libcutils \
     libgptutils \
     libz
@@ -249,16 +248,6 @@ PRODUCT_PACKAGES += \
     android.hardware.drm@1.0-service \
     android.hardware.drm@1.0-service.widevine
 
-# FM
-PRODUCT_PACKAGES += \
-    FM2 \
-    libqcomfm_jni \
-    qcom.fmradio \
-    qcom.fmradio.xml
-
-PRODUCT_PACKAGES += \
-    android.hardware.broadcastradio@1.0-impl
-
 # GPS / Location
 PRODUCT_PACKAGES += \
     android.hardware.gnss@1.0-impl-qti \
@@ -323,8 +312,7 @@ PRODUCT_PACKAGES += \
 	init.qcom.rc \
 	init.recovery.qcom.rc \
     init.qcom.usb.rc \
-    init.target.rc \
-    ueventd.qcom.rc
+    init.target.rc
 
 # IPv6
 PRODUCT_PACKAGES += \
@@ -416,7 +404,7 @@ PRODUCT_PACKAGES += \
 
 # Low power Whitelist
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/qti_whitelist.xml:system/etc/sysconfig/qti_whitelist.xml \
+    $(LOCAL_PATH)/configs/qti_whitelist.xml:system/etc/sysconfig/qti_whitelist.xml
 
 # QMI
 PRODUCT_PACKAGES += \
