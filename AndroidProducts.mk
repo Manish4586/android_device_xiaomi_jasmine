@@ -1,2 +1,2 @@
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/device_jasmine.mk
+    $(LOCAL_DIR)/lineage_jasmine.mk

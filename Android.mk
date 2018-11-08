@@ -16,15 +16,15 @@
 
 LOCAL_PATH := $(call my-dir)
 
-ifneq ($(filter jasmine,$(TARGET_DEVICE)),)
-
+ifeq ($(TARGET_DEVICE),jasmine)
 include $(call all-makefiles-under,$(LOCAL_PATH))
+
+include $(CLEAR_VARS)
 
 $(shell mkdir -p $(TARGET_OUT_VENDOR)/firmware; \
     ln -sf /dev/block/bootdevice/by-name/msadp \
         $(TARGET_OUT_VENDOR)/firmware/msadp)
 
-include $(CLEAR_VARS)
 
 LOCAL_MODULE := wifi_symlinks
 LOCAL_MODULE_TAGS := optional

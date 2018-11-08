@@ -23,7 +23,7 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/product_launched_with_o_mr1.mk
 $(call inherit-product, vendor/lineage/config/common_full_phone.mk)
 
 # Inherit from jasmine device
-$(call inherit-product, device/xiaomi/jasmine/device_jasmine.mk)
+$(call inherit-product, $(LOCAL_PATH)/device.mk)
 
 PRODUCT_BRAND := Xiaomi
 PRODUCT_DEVICE := jasmine
@@ -33,9 +33,11 @@ PRODUCT_NAME := lineage_jasmine
 
 PRODUCT_GMS_CLIENTID_BASE := android-xiaomi
 
-TARGET_VENDOR_PRODUCT_NAME := jasmine
-
 PRODUCT_BUILD_PROP_OVERRIDES += \
+    TARGET_DEVICE="jasmine" \
+    PRODUCT_NAME="jasmine" \
     PRIVATE_BUILD_DESC="jasmine-user 8.1.0 OPM1.171019.011 V9.6.15.0.ODIMIFE release-keys"
 
-BUILD_FINGERPRINT := xiaomi/jasmine/jasmine_sprout:8.1.0/OPM1.171019.011/V9.6.15.0.ODIMIFE:user/release-keys
+BUILD_FINGERPRINT := "Xiaomi/jasmine/jasmine_sprout:8.1.0/OPM1.171019.011/V9.6.15.0.ODIMIFE:user/release-keys"
+
+TARGET_VENDOR_PRODUCT_NAME := jasmine
