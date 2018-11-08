@@ -312,7 +312,8 @@ PRODUCT_PACKAGES += \
 	init.qcom.rc \
 	init.recovery.qcom.rc \
     init.qcom.usb.rc \
-    init.target.rc
+    init.target.rc \
+	ueventd.qcom.rc
 
 # IPv6
 PRODUCT_PACKAGES += \
