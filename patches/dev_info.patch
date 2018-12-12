@@ -33,6 +33,7 @@ index f756b26..0f87d0b 100644
         settings:allowDividerAbove="true"/>
  </PreferenceScreen> 
 </PreferenceScreen>
+diff --git a/src/com/android/settings/deviceinfo/DeviceInfoSettings.java b/src/com/android/settings/deviceinfo/DeviceInfoSettings.java
 --- a/src/com/android/settings/deviceinfo/DeviceInfoSettings.java
 +++ b/src/com/android/settings/deviceinfo/DeviceInfoSettings.java
 @@ -45,6 +45,8 @@
