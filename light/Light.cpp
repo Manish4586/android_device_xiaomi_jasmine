@@ -86,7 +86,7 @@ static std::string getScaledRamp(uint32_t brightness) {
     return ramp;
 }
 
-static void handleJasmineBacklight(Type /*type*/, const LightState& state) {
+static void handleWayneBacklight(Type /*type*/, const LightState& state) {
     uint32_t brightness = state.color & 0xFF;
     set(LCD_LED BRIGHTNESS, brightness);
 }
@@ -151,7 +151,7 @@ static std::vector<std::pair<Type, LightState>> notificationStates = {
     { Type::BATTERY, offState },
 };
 
-static void handleJasmineNotification(Type type, const LightState& state) {
+static void handleWayneNotification(Type type, const LightState& state) {
     for(auto it : notificationStates) {
         if (it.first == type) {
             it.second = state;
@@ -167,10 +167,10 @@ static void handleJasmineNotification(Type type, const LightState& state) {
 }
 
 static std::map<Type, std::function<void(Type type, const LightState&)>> lights = {
-    {Type::BACKLIGHT, handleJasmineBacklight},
-    {Type::NOTIFICATIONS, handleJasmineNotification},
-    {Type::BATTERY, handleJasmineNotification},
-    {Type::ATTENTION, handleJasmineNotification},
+    {Type::BACKLIGHT, handleWayneBacklight},
+    {Type::NOTIFICATIONS, handleWayneNotification},
+    {Type::BATTERY, handleWayneNotification},
+    {Type::ATTENTION, handleWayneNotification},
 };
 
 Light::Light() {}
