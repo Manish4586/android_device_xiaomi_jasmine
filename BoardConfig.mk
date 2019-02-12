@@ -26,6 +26,9 @@ include device/xiaomi/sdm660-common/PlatformConfig.mk
 # Device Path
 DEVICE_PATH := device/xiaomi/jasmine_sprout
 
+# Assert
+TARGET_OTA_ASSERT_DEVICE := jasmine, jasmine_sprout
+
 # A/B
 AB_OTA_UPDATER := true
 BOARD_BUILD_SYSTEM_ROOT_IMAGE := true
@@ -38,6 +41,8 @@ TARGET_TAP_TO_WAKE_NODE := "/proc/nvt_wake_gesture"
 # Kernel
 TARGET_KERNEL_SOURCE := kernel/xiaomi/sdm660
 TARGET_KERNEL_CONFIG := jasmine-perf_defconfig
+TARGET_KERNEL_KBUILD_BUILD_USER="root"
+TARGET_KERNEL_KBUILD_BUILD_HOST="Manish4586"
 
 # Manifest
 DEVICE_MANIFEST_FILE := $(DEVICE_PATH)/manifest.xml
