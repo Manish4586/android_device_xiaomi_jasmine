@@ -26,9 +26,6 @@ include device/xiaomi/sdm660-common/PlatformConfig.mk
 # Device Path
 DEVICE_PATH := device/xiaomi/jasmine_sprout
 
-# Assert
-TARGET_OTA_ASSERT_DEVICE := jasmine, jasmine_sprout
-
 # A/B
 AB_OTA_UPDATER := true
 BOARD_BUILD_SYSTEM_ROOT_IMAGE := true
