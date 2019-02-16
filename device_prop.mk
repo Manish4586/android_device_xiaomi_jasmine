@@ -51,7 +51,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
 	persist.vendor.imx376_sunny.light.lux=275 \
 	persist.vendor.imx376_ofilm.low.lux=290 \
 	persist.vendor.imx376_ofilm.light.lux=275 \
-
+	persist.vendor.camera.HAL3.enabled=1 \
+    persist.vendor.camera.stats.test=5 \
+	persist.camera.eis.enable=1
+	
 # Dual SIM
 PRODUCT_PROPERTY_OVERRIDES += \
 	persist.radio.multisim.config=dsds
@@ -75,6 +78,4 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Vibration
 PRODUCT_PROPERTY_OVERRIDES += \
-	sys.haptic.down.normal=5,15 \
-	sys.haptic.down.strong=0,20 \
 	sys.haptic.down.weak=9,11
