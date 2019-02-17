@@ -55,6 +55,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.vendor.camera.stats.test=5 \
 	persist.camera.eis.enable=1
 	
+# LCD
+PRODUCT_PROPERTY_OVERRIDES += \
+	ro.sf.lcd_density=403	
+	
 # Dual SIM
 PRODUCT_PROPERTY_OVERRIDES += \
 	persist.radio.multisim.config=dsds
