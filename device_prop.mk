@@ -57,7 +57,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 	
 # LCD
 PRODUCT_PROPERTY_OVERRIDES += \
-	ro.sf.lcd_density=403	
+	ro.sf.lcd_density=360	
 	
 # Dual SIM
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -78,7 +78,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Radio
 PRODUCT_PROPERTY_OVERRIDES += \
 	persist.vendor.iwlan.enable=true \
-	persist.vendor.radio.data_con_rprt=1
+	persist.vendor.radio.data_con_rprt=1 \
+    persist.radio.VT_CAM_INTERFACE=2
 
 # Vibration
 PRODUCT_PROPERTY_OVERRIDES += \
