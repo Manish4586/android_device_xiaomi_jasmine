@@ -341,7 +341,7 @@
     <ctl name="EAR PA Gain" value="POS_1P5_DB" />
     <ctl name="EAR PA Boost" value="ENABLE" />
 
-    <ctl name="RX1 Digital Volume" value="88" />
+    <ctl name="RX1 Digital Volume" value="84" />
     <ctl name="RX2 Digital Volume" value="84" />
     <ctl name="RX3 Digital Volume" value="84" />
     <ctl name="RX4 Digital Volume" value="84" />
@@ -2319,8 +2319,6 @@
     </path>
 
     <path name="bt-a2dp">
-		<ctl name="BT SampleRate" value="KHZ_48" />		
-        <ctl name="AFE Input Channels" value="Two" />
         <ctl name="SLIM7_RX ADM Channels" value="Two" />
     </path>
 

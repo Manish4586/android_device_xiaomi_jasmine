@@ -52,8 +52,11 @@ PRODUCT_PROPERTY_OVERRIDES += \
 	persist.vendor.imx376_ofilm.low.lux=290 \
 	persist.vendor.imx376_ofilm.light.lux=275 \
 	persist.vendor.camera.HAL3.enabled=1 \
-    persist.vendor.camera.stats.test=5 \
-	persist.camera.eis.enable=1
+	persist.camera.eis.enable=1 \
+    persist.camera.expose.aux=1 \
+    persist.camera.HAL3.enabled=1 \
+    persist.camera.stats.test=0 \
+    persist.camera.set.afd=4 
 	
 # LCD
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -80,7 +83,3 @@ PRODUCT_PROPERTY_OVERRIDES += \
 	persist.vendor.iwlan.enable=true \
 	persist.vendor.radio.data_con_rprt=1 \
     persist.radio.VT_CAM_INTERFACE=2
-
-# Vibration
-PRODUCT_PROPERTY_OVERRIDES += \
-	sys.haptic.down.weak=9,11
