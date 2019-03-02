@@ -41,6 +41,10 @@ PRODUCT_BUILD_PROP_OVERRIDES += \
     PRODUCT_NAME="jasmine_sprout" \
     PRIVATE_BUILD_DESC="jasmine-user 9 PKQ1.180904.001 V10.0.3.0.PDIMIXM release-keys"
 
+# Maintainer Prop
+PRODUCT_BUILD_PROP_OVERRIDES += \
+DEVICE_MAINTAINERS="Manish4586"	
+	
 BUILD_FINGERPRINT := "xiaomi/jasmine/jasmine_sprout:9/PKQ1.180904.001/V10.0.3.0.PDIMIXM:user/release-keys"
 
 TARGET_VENDOR_PRODUCT_NAME := jasmine
