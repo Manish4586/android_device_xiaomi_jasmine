@@ -95,6 +95,9 @@ PRODUCT_COPY_FILES += \
 	frameworks/native/data/etc/android.hardware.camera.flash-autofocus.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.camera.flash-autofocus.xml \
 	frameworks/native/data/etc/android.hardware.consumerir.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.consumerir.xml
 
+# Performance
+include vendor/qcom/common/qti-vendor.mk	
+	
 # Ramdisk
  PRODUCT_PACKAGES += \
 	init.goodix.sh \

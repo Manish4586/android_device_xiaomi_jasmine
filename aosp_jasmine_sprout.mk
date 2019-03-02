@@ -22,7 +22,7 @@
 #
 
 # Inherit some common Lineage stuff.
-$(call inherit-product, vendor/aosp/config/common_full_phone.mk)
+$(call inherit-product, vendor/aosp/config/common.mk)
 
 # Inherit from jasmine device
 $(call inherit-product, $(LOCAL_PATH)/device.mk)
