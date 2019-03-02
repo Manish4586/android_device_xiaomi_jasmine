@@ -1,1 +1,8 @@
+#
+# from device/xiaomi/jasmine_sprout/system.prop
+#
+
+#
+# ADDITIONAL_BUILD_PROPERTIES
+#
 sys.display-size=3840x2160
