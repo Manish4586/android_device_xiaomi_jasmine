@@ -1,0 +1,15 @@
+#
+# system.prop for sdm660
+#
+#
+# system property for camera hal3
+persist.camera.HAL3.enabled=1
+persist.vendor.camera.HAL3.enabled=1
+persist.vendor.camera.stats.test=5
+
+# add property for youtube
+sys.display-size=3840x2160
+
+# exif info for camera
+persist.vendor.exif.make=Xiaomi
+persist.vendor.exif.model=Mi A2

@@ -102,6 +102,9 @@ PRODUCT_COPY_FILES += \
 	frameworks/native/data/etc/android.hardware.camera.flash-autofocus.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.camera.flash-autofocus.xml \
 	frameworks/native/data/etc/android.hardware.consumerir.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.consumerir.xml
 
+# Performance
+include vendor/qcom/common/qti-vendor.mk	
+	
 # Ramdisk
  PRODUCT_PACKAGES += \
 	init.goodix.sh \
@@ -137,10 +140,3 @@ $(call inherit-product, build/target/product/verity.mk)
 
 # Vendor files
 $(call inherit-product, vendor/xiaomi/wayne/wayne-vendor.mk)
-
-# AOSP DEVICE
-PRODUCT_NAME := aosp_jasmine_sprout
-PRODUCT_DEVICE := jasmine_sprout
-PRODUCT_MODEL := Mi A2 (AOSP)
-PRODUCT_BRAND := Xiaomi
-PRODUCT_MANUFACTURER := Xiaomi

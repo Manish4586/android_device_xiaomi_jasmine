@@ -20,23 +20,34 @@
 # included in a build is to use PRODUCT_PACKAGES in a product
 # definition file).
 #
+
 #TWRP
 BUILD_TWRP := true
+
 # Inherit device configuration
 $(call inherit-product, device/xiaomi/jasmine_sprout/device.mk)
 
-# Inherit from Havoc custom product configuration
-$(call inherit-product, vendor/havoc/config/common.mk)
+# Inherit some common aosp stuff.
+$(call inherit-product, vendor/aosp/config/common.mk)
 
-TARGET_VENDOR_PRODUCT_NAME := jasmine_sprout
-
-PRODUCT_PROPERTY_OVERRIDES += \
-	ro.havoc.maintainer=rcstar6696
+TARGET_BOOT_ANIMATION_RES := 1080
+TARGET_GAPPS_ARCH := arm64
+export CUSTOM_BUILD_TYPE=OFFICIAL
 
 # Device identifier
-PRODUCT_BRAND := Xiaomi
+PRODUCT_BRAND := xiaomi
 PRODUCT_MANUFACTURER := Xiaomi
 PRODUCT_PLATFORM := SDM660
-PRODUCT_NAME := havoc_jasmine_sprout
+PRODUCT_NAME := aosp_jasmine_sprout
 PRODUCT_DEVICE := jasmine_sprout
-PRODUCT_MODEL := MI A2
+PRODUCT_MODEL := Mi A2
+
+PRODUCT_BUILD_PROP_OVERRIDES += \
+    TARGET_DEVICE="jasmine_sprout" \
+    PRODUCT_NAME="jasmine"
+
+TARGET_VENDOR_PRODUCT_NAME := jasmine
+
+# Maintainer Prop
+PRODUCT_BUILD_PROP_OVERRIDES += \
+DEVICE_MAINTAINERS="Manish4586"
