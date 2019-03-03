@@ -3,101 +3,10 @@
 #
 #
 
-# System property for camera
+# System property for camera hal3 and eis
 persist.camera.HAL3.enabled=1
 persist.vendor.camera.HAL3.enabled=1
 persist.vendor.camera.stats.test=5
 persist.camera.stats.test=5
 persist.camera.eis.enable=1
 sys.display-size=3840x2160
-
-# System property for cabl
-ro.qualcomm.cabl=0
-ro.vendor.display.cabl=0
-
-#Settings to enable sensors
-#Device Orientation sensor
-ro.vendor.sensors.dev_ori=false
-#Persistent Motion Detector
-ro.vendor.sensors.pmd=true
-#Stationary Detector
-ro.vendor.sensors.sta_detect=true
-#Motion Detector
-ro.vendor.sensors.mot_detect=true
-
-#properties for camera front flash lux
-persist.vendor.imx376_sunny.low.lux=290
-persist.vendor.imx376_sunny.light.lux=275
-
-persist.vendor.imx376_ofilm.low.lux=290
-persist.vendor.imx376_ofilm.light.lux=275
-
-#properties for bokeh switch master and slave lux
-persist.vendor.bokeh.switch.lux=290
-
-#disable UBWC for camera
-persist.vendor.camera.preview.ubwc=0
-
-persist.vendor.camera.depth.focus.cb=0
-
-persist.vendor.camera.isp.clock.optmz=0
-persist.vendor.camera.linkpreview=0
-persist.vendor.camera.isp.turbo=1
-persist.vendor.qti.telephony.vt_cam_interface=1
-
-#back and fornt camera use different face detect parameters
-persist.vendor.camera.imglib.usefdlite=1
-
-#exif info for camera
-persist.vendor.camera.exif.make=Xiaomi
-persist.vendor.camera.exif.model=Mi A2
-
-#min/max cpu in core control
-ro.vendor.qti.core_ctl_min_cpu=2
-ro.vendor.qti.core_ctl_max_cpu=4
-
-#Property to enable display default color mode
-vendor.display.enable_default_color_mode=1
-
-# Additional buffers shared between Camera and Video
-vidc.enc.dcvs.extra-buff-count=2
-
-# enable b-services aging propagation
-ro.vendor.qti.sys.fw.bservice_enable=true
-#iwaln vowifi corresponding
-persist.data.iwlan.enable=true
-
-#
-# system property determining camera HAL to be used for a Video call
-#
-# 1 is camera1
-# 2 or anything else is camera2
-persist.radio.VT_CAM_INTERFACE=2
-
-#HTH-30190 connect wifi, set 3G pre,observe Mobile network type should display UMTS but IWLAN.
-persist.vendor.radio.data_con_rprt=1
-
-vendor.mm.enable.qcom_parser=262029
-
-#set maximum supported adapter voltage
-persist.chg.max_volt_mv=9000
-
-#
-# Set network mode to (T/L/G/W/1X/EVDO, T/G/W/L) for 7+5 mode device on DSDS mode
-#
-ro.telephony.default_network=9,9
-
-# system property for maximum number of HFP client connections
-bt.max.hfpclient.connections=1
-#force disable Bluetooth AAC by default
-persist.bt.a2dp.aac_disable=true
-
-#system prop for Bluetooth SOC type
-vendor.bluetooth.soc=cherokee
-ro.bluetooth.library_name=libbluetooth_qti.so
-persist.vendor.btstack.enable.splita2dp=true
-persist.vendor.btstack.a2dp_offload_cap=sbc-aptx-aptxhd-aac
-
-#Simulate sdcard on /data/media
-#
-persist.fuse_sdcard=true

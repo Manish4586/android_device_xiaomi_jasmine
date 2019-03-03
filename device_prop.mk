@@ -35,6 +35,28 @@ PRODUCT_PROPERTY_OVERRIDES += \
 	persist.vendor.audio.fluence.speaker=true \
 	vendor.audio.adm.buffering.ms=6 \
 	vendor.audio.offload.track.enable=false
+
+# Camera
+PRODUCT_PROPERTY_OVERRIDES += \
+	persist.vendor.camera.preview.ubwc=0 \
+	persist.vendor.camera.stats.test=5 \
+	persist.vendor.camera.depth.focus.cb=0 \
+	persist.vendor.camera.isp.clock.optmz=0 \
+	persist.vendor.camera.linkpreview=0 \
+	persist.vendor.camera.isp.turbo=1 \
+	persist.vendor.camera.imglib.usefdlite=1 \
+	persist.vendor.camera.exif.make=Xiaomi \
+	persist.vendor.camera.exif.model=Mi A2 \
+	persist.vendor.imx376_sunny.low.lux=290 \
+	persist.vendor.imx376_sunny.light.lux=275 \
+	persist.vendor.imx376_ofilm.low.lux=290 \
+	persist.vendor.imx376_ofilm.light.lux=275 \
+	persist.vendor.camera.HAL3.enabled=1 \
+	persist.camera.eis.enable=1 \
+    persist.camera.expose.aux=1 \
+    persist.camera.HAL3.enabled=1 \
+    persist.camera.stats.test=0 \
+    persist.camera.set.afd=4 
 	
 # LCD
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -44,6 +66,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
 	persist.radio.multisim.config=dsds
 
+# Media
+PRODUCT_PROPERTY_OVERRIDES += \
+	vendor.mm.enable.qcom_parser=262029
+
 # Paper mode
 PRODUCT_PROPERTY_OVERRIDES += \
 	sys.jdi_nt36672_offset=9 \
@@ -51,3 +77,9 @@ PRODUCT_PROPERTY_OVERRIDES += \
 	sys.paper_mode_max_level=32 \
 	sys.tianma_nt36672_offset=12 \
 	sys.tianma_nt36672_length=46
+
+# Radio
+PRODUCT_PROPERTY_OVERRIDES += \
+	persist.vendor.iwlan.enable=true \
+	persist.vendor.radio.data_con_rprt=1 \
+    persist.radio.VT_CAM_INTERFACE=2
