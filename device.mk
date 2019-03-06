@@ -86,6 +86,7 @@ $(call inherit-product, $(DEVICE_PATH)/device_prop.mk)
 
 # Media
 PRODUCT_COPY_FILES += \
+	$(DEVICE_PATH)/media/media_codecs_vendor.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs.xml \
 	$(DEVICE_PATH)/media/media_codecs_vendor.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_vendor.xml \
 	$(DEVICE_PATH)/media/media_codecs_performance.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_performance.xml \
 	$(DEVICE_PATH)/media/media_profiles_sdm660_v1.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_profiles_sdm660_v1.xml \
@@ -126,7 +127,10 @@ PRODUCT_PACKAGES_DEBUG += \
 PRODUCT_PACKAGES += \
 	android.hardware.vibrator@1.0-impl \
 	android.hardware.vibrator@1.0-service
-
+	
+# Init
+PRODUCT_PACKAGES += \
+ 	libinit_jasmine_sprout
 # Verity
 PRODUCT_SYSTEM_VERITY_PARTITION := /dev/block/platform/soc/c0c4000.sdhci/by-name/system
 PRODUCT_VENDOR_VERITY_PARTITION := /dev/block/platform/soc/c0c4000.sdhci/by-name/vendor

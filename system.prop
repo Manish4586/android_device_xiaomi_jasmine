@@ -2,7 +2,6 @@
 # system.prop for sdm660
 #
 #
-
 # System property for camera hal3 and eis
 persist.camera.HAL3.enabled=1
 persist.vendor.camera.HAL3.enabled=1
