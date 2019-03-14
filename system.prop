@@ -7,5 +7,4 @@ persist.camera.HAL3.enabled=1
 persist.vendor.camera.HAL3.enabled=1
 persist.vendor.camera.stats.test=5
 persist.camera.stats.test=5
-persist.camera.eis.enable=1
 sys.display-size=3840x2160
