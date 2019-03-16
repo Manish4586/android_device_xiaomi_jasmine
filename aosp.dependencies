@@ -23,9 +23,28 @@
     "target_path": "vendor/xiaomi/MiuiCamera",
     "branch":      "master"
   },
-    {
+  {
     "remote":      "github",
     "repository":  "Manish4586/android_vendor_google_GoogleCamera",
     "target_path": "vendor/google/GoogleCamera",
     "branch":      "9.0"
+  },
+  {
+    "repository": "packages_apps_Playground",
+    "target_path": "packages/apps/Playground",
+    "branch": "pie",
+    "remote": "pixel-gitlab"
+  },
+  {
+    "repository": "packages_apps_GoogleCameraMod",
+    "target_path": "packages/apps/GoogleCameraMod",
+    "branch": "pie-beryllium",
+    "remote": "pixel-gitlab"
+  },
+  {
+    "repository": "packages_apps_WallpapersBReel2018",
+    "target_path": "packages/apps/WallpapersBReel2018",
+    "branch": "pie",
+    "remote": "pixel-gitlab"
   }
+]
