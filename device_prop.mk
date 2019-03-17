@@ -29,9 +29,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Audio
 PRODUCT_PROPERTY_OVERRIDES += \
-	ro.vendor.audio.sdk.fluencetype=fluencepro \
+	ro.vendor.audio.sdk.fluencetype=fluence \
+	persist.audio.voice.clarity=ON \
 	persist.vendor.audio.fluence.voicecall=true \
-	persist.vendor.audio.fluence.voicerec=false \
+	persist.vendor.audio.fluence.voicerec=true \
 	persist.vendor.audio.fluence.speaker=true \
 	vendor.audio.adm.buffering.ms=6 \
 	vendor.audio.offload.track.enable=false
