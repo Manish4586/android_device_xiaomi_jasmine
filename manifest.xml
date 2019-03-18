@@ -426,16 +426,6 @@
         <fqname>@1.0::IFingerprintSensorTest/default</fqname>
     </hal>
     <hal format="hidl">
-        <name>com.qualcomm.qti.ant</name>
-        <transport>hwbinder</transport>
-        <version>1.0</version>
-        <interface>
-            <name>IAntHci</name>
-            <instance>default</instance>
-        </interface>
-        <fqname>@1.0::IAntHci/default</fqname>
-    </hal>
-    <hal format="hidl">
         <name>com.qualcomm.qti.bluetooth_audio</name>
         <transport>hwbinder</transport>
         <version>1.0</version>
@@ -607,16 +597,6 @@
             <instance>default</instance>
         </interface>
         <fqname>@1.0::IFactory/default</fqname>
-    </hal>
-    <hal format="hidl">
-        <name>vendor.qti.hardware.fm</name>
-        <transport>hwbinder</transport>
-        <version>1.0</version>
-        <interface>
-            <name>IFmHci</name>
-            <instance>default</instance>
-        </interface>
-        <fqname>@1.0::IFmHci/default</fqname>
     </hal>
     <hal format="hidl">
         <name>vendor.qti.hardware.perf</name>
