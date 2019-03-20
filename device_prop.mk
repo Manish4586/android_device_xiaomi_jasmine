@@ -63,7 +63,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
 	persist.vendor.camera.multicam.hwsync=TRUE \
 	persist.vendor.camera.multicam.fpsmatch=TRUE \
 	persist.vendor.camera.multicam.framesync=1 \
-	persist.vendor.camera.enableAdvanceFeatures=0x347 
+	persist.vendor.camera.enableAdvanceFeatures=0x347 \
+	persist.vendor.camera.expose.aux=1	
 	
 # Dual SIM
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -85,4 +86,4 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
 	persist.vendor.iwlan.enable=true \
 	persist.vendor.radio.data_con_rprt=1 \
-    persist.radio.VT_CAM_INTERFACE=2
+	persist.radio.VT_CAM_INTERFACE=2

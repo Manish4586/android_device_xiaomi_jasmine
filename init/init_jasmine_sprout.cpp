@@ -173,7 +173,7 @@ void vendor_load_properties()
     init_finger_print_properties();
     init_setup_model_properties();
 
-    property_override("vendor.display.lcd_density", "360");
+    property_override("vendor.display.lcd_density", "480");
 
     property_set("dalvik.vm.heapstartsize", heapstartsize);
     property_set("dalvik.vm.heapgrowthlimit", heapgrowthlimit);
