@@ -86,4 +86,4 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
 	persist.vendor.iwlan.enable=true \
 	persist.vendor.radio.data_con_rprt=1 \
-    persist.radio.VT_CAM_INTERFACE=2
+	persist.radio.VT_CAM_INTERFACE=2
