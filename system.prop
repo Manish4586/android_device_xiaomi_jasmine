@@ -8,3 +8,5 @@ persist.vendor.camera.HAL3.enabled=1
 persist.vendor.camera.stats.test=5
 persist.camera.stats.test=5
 sys.display-size=3840x2160
+persist.sys.exif.make=Xiaomi
+persist.sys.exif.model=Mi A2
