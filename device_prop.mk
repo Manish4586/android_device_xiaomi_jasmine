@@ -55,8 +55,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
 	persist.imx376_sunny.light.lux=280 \
 	persist.imx376_ofilm.low.lux=310 \
 	persist.imx376_ofilm.light.lux=280 \
-	persist.sys.exif.make=Xiaomi \
-	persist.sys.exif.model=Mi A2 \
 	ro.eyecare.brightness.threshold=3 \
 	ro.eyecare.brightness.level=8 \
 	ro.hist.brightness.threshold=5 \
@@ -74,6 +72,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
 	vendor.mm.enable.qcom_parser=262029
 
+# DPI
+PRODUCT_PROPERTY_OVERRIDES += \
+	vendor.display.lcd_density=480	
+	
 # Paper mode
 PRODUCT_PROPERTY_OVERRIDES += \
 	sys.jdi_nt36672_offset=9 \
