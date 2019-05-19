@@ -2,8 +2,8 @@
   {
     "remote":      "github",
     "repository":  "Manish4586/android_device_xiaomi_sdm660-common",
-    "target_path": "device/xiaomi/sdm660-common"
-    "branch":      "pe-9.0"
+    "target_path": "device/xiaomi/sdm660-common",
+    "branch":      "aosp"
   },
   {
     "remote":      "github",
@@ -13,38 +13,20 @@
   },
   {
     "remote":      "github",
+    "repository":  "Manish4586/android_kernel_xiaomi_jasmine_sprout",
+    "target_path": "kernel/xiaomi/sdm660",
+    "branch":      "pie"
+  },
+  {
+    "remote":      "github",
     "repository":  "LineageOS/android_packages_resources_devicesettings",
     "target_path": "packages/resources/devicesettings",
     "branch":      "lineage-16.0"
   },
   {
     "remote":      "github",
-    "repository":  "xiaomi-sdm660/android_vendor_xiaomi_Miuicamera",
-    "target_path": "vendor/xiaomi/MiuiCamera",
-    "branch":      "master"
-  },
-  {
-    "remote":      "github",
     "repository":  "Manish4586/android_vendor_google_GoogleCamera",
     "target_path": "vendor/google/GoogleCamera",
     "branch":      "9.0"
-  },
-  {
-    "repository": "packages_apps_Playground",
-    "target_path": "packages/apps/Playground",
-    "branch": "pie",
-    "remote": "pixel-gitlab"
-  },
-  {
-    "repository": "packages_apps_GoogleCameraMod",
-    "target_path": "packages/apps/GoogleCameraMod",
-    "branch": "pie-beryllium",
-    "remote": "pixel-gitlab"
-  },
-  {
-    "repository": "packages_apps_WallpapersBReel2018",
-    "target_path": "packages/apps/WallpapersBReel2018",
-    "branch": "pie",
-    "remote": "pixel-gitlab"
   }
 ]
