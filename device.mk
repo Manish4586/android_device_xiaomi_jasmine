@@ -21,8 +21,8 @@
 # definition file).
 #
 
-# Platform Path
-PLATFORM_PATH := device/xiaomi/sdm660-common
+# Device Path
+DEVICE_PATH := device/xiaomi/jasmine_sprout
 
 # Inherit from those products. Most specific first.
 $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
@@ -35,16 +35,111 @@ $(call inherit-product-if-exists, vendor/xiaomi/MiuiCamera/config.mk)
 $(call inherit-product, vendor/xiaomi/sdm660-common/sdm660-common-vendor.mk)
 
 # Overlays
-DEVICE_PACKAGE_OVERLAYS := device/xiaomi/sdm660-common/overlay
+DEVICE_PACKAGE_OVERLAYS += \
+	 $(DEVICE_PATH)/overlay
 
-# Build Fingerprint
-PRODUCT_BUILD_PROP_OVERRIDES += \
-	PRIVATE_BUILD_DESC="taimen-user 9 PQ3A.190605.003 5524043 release-keys"
+# A/B
+AB_OTA_UPDATER := true
+AB_OTA_PARTITIONS += \
+	boot \
+	system \
+	vendor
 
-BUILD_FINGERPRINT := google/taimen/taimen:9/PQ3A.190605.003/5524043:user/release-keys
+AB_OTA_POSTINSTALL_CONFIG += \
+	RUN_POSTINSTALL_system=true \
+	POSTINSTALL_PATH_system=system/bin/otapreopt_script \
+	FILESYSTEM_TYPE_system=ext4 \
+	POSTINSTALL_OPTIONAL_system=true
 
-# Platform properties
-$(call inherit-product, $(PLATFORM_PATH)/platform_prop.mk)
+PRODUCT_PACKAGES += \
+	otapreopt_script
+
+# Audio
+PRODUCT_COPY_FILES += \
+	$(DEVICE_PATH)/audio/audio_effects.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_effects.xml \
+	$(DEVICE_PATH)/audio/audio_output_policy.conf:$(TARGET_COPY_OUT_VENDOR)/etc/audio_output_policy.conf \
+	$(DEVICE_PATH)/audio/audio_platform_info.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_platform_info.xml \
+	$(DEVICE_PATH)/audio/listen_platform_info.xml:$(TARGET_COPY_OUT_VENDOR)/etc/listen_platform_info.xml \
+	$(DEVICE_PATH)/audio/mixer_paths.xml:$(TARGET_COPY_OUT_VENDOR)/etc/mixer_paths.xml \
+	$(DEVICE_PATH)/audio/sound_trigger_mixer_paths.xml:$(TARGET_COPY_OUT_VENDOR)/etc/sound_trigger_mixer_paths.xml \
+	$(DEVICE_PATH)/audio/sound_trigger_platform_info.xml:$(TARGET_COPY_OUT_VENDOR)/etc/sound_trigger_platform_info.xml \
+	$(DEVICE_PATH)/audio/audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_policy_configuration.xml \
+	$(DEVICE_PATH)/audio/audio_tuning_mixer.txt:$(TARGET_COPY_OUT_VENDOR)/etc/audio_tuning_mixer.txt \
+	$(DEVICE_PATH)/audio/graphite_ipc_platform_info.xml:$(TARGET_COPY_OUT_VENDOR)/etc/graphite_ipc_platform_info.xml
+
+# Boot animation
+TARGET_SCREEN_HEIGHT := 2160
+TARGET_SCREEN_WIDTH := 1080
+
+PRODUCT_CHARACTERISTICS := nosdcard
+
+# Boot control
+PRODUCT_PACKAGES += \
+	android.hardware.boot@1.0-impl \
+	android.hardware.boot@1.0-service \
+	bootctrl.sdm660 \
+
+PRODUCT_STATIC_BOOT_CONTROL_HAL := \
+	bootctrl.sdm660 \
+	libcutils \
+	libgptutils \
+	libz
+
+# Consumerir
+PRODUCT_PACKAGES += \
+	android.hardware.ir@1.0-impl \
+	android.hardware.ir@1.0-service
+
+# Init
+ PRODUCT_PACKAGES += \
+ 	libinit_jasmine_sprout
+
+# Media
+PRODUCT_COPY_FILES += \
+	$(DEVICE_PATH)/media/media_codecs.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs.xml \
+	$(DEVICE_PATH)/media/media_codecs.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_vendor.xml \
+	$(DEVICE_PATH)/media/media_codecs_performance.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_performance.xml \
+	$(DEVICE_PATH)/media/media_profiles_V1_0.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_profiles_V1_0.xml
+
+# Permissions
+PRODUCT_COPY_FILES += \
+	frameworks/native/data/etc/android.hardware.camera.flash-autofocus.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.camera.flash-autofocus.xml \
+	frameworks/native/data/etc/android.hardware.consumerir.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.consumerir.xml
+
+# Ramdisk
+ PRODUCT_PACKAGES += \
+	init.goodix.sh \
+	init.device.rc
+
+# Screen density
+PRODUCT_AAPT_CONFIG := normal
+PRODUCT_AAPT_PREF_CONFIG := xxhdpi
+
+# Sensors
+PRODUCT_COPY_FILES += \
+	$(DEVICE_PATH)/sensors/sensor_def_qcomdev.conf:$(TARGET_COPY_OUT_VENDOR)/etc/sensors/sensor_def_qcomdev.conf
+
+# Update engine
+PRODUCT_PACKAGES += \
+	brillo_update_payload \
+	update_engine \
+	update_engine_sideload \
+	update_verifier
+
+PRODUCT_PACKAGES_DEBUG += \
+	update_engine_client
+
+# Vibrator
+PRODUCT_PACKAGES += \
+	android.hardware.vibrator@1.1-service.xiaomi_sdm660
+
+# Verity
+PRODUCT_SYSTEM_VERITY_PARTITION := /dev/block/platform/soc/c0c4000.sdhci/by-name/system
+PRODUCT_VENDOR_VERITY_PARTITION := /dev/block/platform/soc/c0c4000.sdhci/by-name/vendor
+$(call inherit-product, build/target/product/verity.mk)
+
+# Vendor files
+$(call inherit-product, vendor/xiaomi/wayne/wayne-vendor.mk)
 
 # Alipay
 PRODUCT_PACKAGES += \
@@ -154,7 +249,7 @@ PRODUCT_PACKAGES += \
 
 # Exclude TOF sensor from InputManager
 PRODUCT_COPY_FILES += \
-	$(PLATFORM_PATH)/configs/excluded-input-devices.xml:system/etc/excluded-input-devices.xml
+	$(DEVICE_PATH)/configs/excluded-input-devices.xml:system/etc/excluded-input-devices.xml
 
 # Fingerprint feature
 PRODUCT_PACKAGES += \
@@ -195,14 +290,14 @@ PRODUCT_COPY_FILES += \
 
 # GPS
 PRODUCT_COPY_FILES += \
-	$(PLATFORM_PATH)/configs/gps/apdr.conf:$(TARGET_COPY_OUT_VENDOR)/etc/apdr.conf \
-	$(PLATFORM_PATH)/configs/gps/flp.conf:$(TARGET_COPY_OUT_VENDOR)/etc/flp.conf \
-	$(PLATFORM_PATH)/configs/gps/gps.conf:$(TARGET_COPY_OUT_VENDOR)/etc/gps.conf \
-	$(PLATFORM_PATH)/configs/gps/izat.conf:$(TARGET_COPY_OUT_VENDOR)/etc/izat.conf \
-	$(PLATFORM_PATH)/configs/gps/lowi.conf:$(TARGET_COPY_OUT_VENDOR)/etc/lowi.conf \
-	$(PLATFORM_PATH)/configs/gps/sap.conf:$(TARGET_COPY_OUT_VENDOR)/etc/sap.conf \
-	$(PLATFORM_PATH)/configs/gps/xtwifi.conf:$(TARGET_COPY_OUT_VENDOR)/etc/xtwifi.conf \
-	$(PLATFORM_PATH)/configs/com.qualcomm.location.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/com.qualcomm.location.xml
+	$(DEVICE_PATH)/configs/gps/apdr.conf:$(TARGET_COPY_OUT_VENDOR)/etc/apdr.conf \
+	$(DEVICE_PATH)/configs/gps/flp.conf:$(TARGET_COPY_OUT_VENDOR)/etc/flp.conf \
+	$(DEVICE_PATH)/configs/gps/gps.conf:$(TARGET_COPY_OUT_VENDOR)/etc/gps.conf \
+	$(DEVICE_PATH)/configs/gps/izat.conf:$(TARGET_COPY_OUT_VENDOR)/etc/izat.conf \
+	$(DEVICE_PATH)/configs/gps/lowi.conf:$(TARGET_COPY_OUT_VENDOR)/etc/lowi.conf \
+	$(DEVICE_PATH)/configs/gps/sap.conf:$(TARGET_COPY_OUT_VENDOR)/etc/sap.conf \
+	$(DEVICE_PATH)/configs/gps/xtwifi.conf:$(TARGET_COPY_OUT_VENDOR)/etc/xtwifi.conf \
+	$(DEVICE_PATH)/configs/com.qualcomm.location.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/com.qualcomm.location.xml
 
 PRODUCT_PACKAGES += \
 	android.hardware.gnss@1.0-impl-qti \
@@ -226,8 +321,8 @@ PRODUCT_PACKAGES += \
 
 # Input
 PRODUCT_COPY_FILES += \
-	$(PLATFORM_PATH)/configs/idc/uinput-fpc.idc:$(TARGET_COPY_OUT_VENDOR)/usr/idc/uinput-fpc.idc \
-	$(PLATFORM_PATH)/configs/idc/uinput-goodix.idc:$(TARGET_COPY_OUT_VENDOR)/usr/idc/uinput-goodix.idc
+	$(DEVICE_PATH)/configs/idc/uinput-fpc.idc:$(TARGET_COPY_OUT_VENDOR)/usr/idc/uinput-fpc.idc \
+	$(DEVICE_PATH)/configs/idc/uinput-goodix.idc:$(TARGET_COPY_OUT_VENDOR)/usr/idc/uinput-goodix.idc
 
 # IPACM
 PRODUCT_PACKAGES += \
@@ -243,14 +338,14 @@ PRODUCT_PACKAGES += \
 
 # IRSC
 PRODUCT_COPY_FILES += \
-	$(PLATFORM_PATH)/configs/sec_config:$(TARGET_COPY_OUT_VENDOR)/etc/sec_config
+	$(DEVICE_PATH)/configs/sec_config:$(TARGET_COPY_OUT_VENDOR)/etc/sec_config
 
 # Keylayouts
 PRODUCT_COPY_FILES += \
-	$(PLATFORM_PATH)/configs/keylayout/sdm660-snd-card_Button_Jack.kl:$(TARGET_COPY_OUT_VENDOR)/usr/keylayout/sdm660-snd-card_Button_Jack.kl \
-	$(PLATFORM_PATH)/configs/keylayout/gpio-keys.kl:$(TARGET_COPY_OUT_VENDOR)/usr/keylayout/gpio-keys.kl \
-	$(PLATFORM_PATH)/configs/keylayout/uinput-goodix.kl:$(TARGET_COPY_OUT_VENDOR)/usr/keylayout/uinput-goodix.kl \
-	$(PLATFORM_PATH)/configs/keylayout/uinput-fpc.kl:$(TARGET_COPY_OUT_VENDOR)/usr/keylayout/uinput-fpc.kl
+	$(DEVICE_PATH)/configs/keylayout/sdm660-snd-card_Button_Jack.kl:$(TARGET_COPY_OUT_VENDOR)/usr/keylayout/sdm660-snd-card_Button_Jack.kl \
+	$(DEVICE_PATH)/configs/keylayout/gpio-keys.kl:$(TARGET_COPY_OUT_VENDOR)/usr/keylayout/gpio-keys.kl \
+	$(DEVICE_PATH)/configs/keylayout/uinput-goodix.kl:$(TARGET_COPY_OUT_VENDOR)/usr/keylayout/uinput-goodix.kl \
+	$(DEVICE_PATH)/configs/keylayout/uinput-fpc.kl:$(TARGET_COPY_OUT_VENDOR)/usr/keylayout/uinput-fpc.kl
 
 # Lights
 PRODUCT_PACKAGES += \
@@ -262,7 +357,7 @@ PRODUCT_PACKAGES += \
 
 # MSM IRQ Balancer configuration file for SDM660
 PRODUCT_COPY_FILES += \
-	$(PLATFORM_PATH)/configs/msm_irqbalance.conf:$(TARGET_COPY_OUT_VENDOR)/etc/msm_irqbalance.conf
+	$(DEVICE_PATH)/configs/msm_irqbalance.conf:$(TARGET_COPY_OUT_VENDOR)/etc/msm_irqbalance.conf
 
 # Net
 PRODUCT_PACKAGES += \
@@ -330,12 +425,12 @@ PRODUCT_PACKAGES += \
 
 # Public Libraries
 PRODUCT_COPY_FILES += \
-	$(PLATFORM_PATH)/configs/public.libraries.txt:$(TARGET_COPY_OUT_VENDOR)/etc/public.libraries.txt
+	$(DEVICE_PATH)/configs/public.libraries.txt:$(TARGET_COPY_OUT_VENDOR)/etc/public.libraries.txt
 
 # QCOM
 PRODUCT_COPY_FILES += \
-	$(PLATFORM_PATH)/configs/privapp-permissions-qti.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/privapp-permissions-qti.xml \
-	$(PLATFORM_PATH)/configs/qti_whitelist.xml:$(TARGET_COPY_OUT_VENDOR)/etc/sysconfig/qti_whitelist.xml
+	$(DEVICE_PATH)/configs/privapp-permissions-qti.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/privapp-permissions-qti.xml \
+	$(DEVICE_PATH)/configs/qti_whitelist.xml:$(TARGET_COPY_OUT_VENDOR)/etc/sysconfig/qti_whitelist.xml
 
 # QMI
 PRODUCT_PACKAGES += \
@@ -393,7 +488,7 @@ PRODUCT_PACKAGES += \
 
 # Sensor HAL conf file
 PRODUCT_COPY_FILES += \
-	$(PLATFORM_PATH)/sensors/hals.conf:$(TARGET_COPY_OUT_VENDOR)/etc/sensors/hals.conf
+	$(DEVICE_PATH)/sensors/hals.conf:$(TARGET_COPY_OUT_VENDOR)/etc/sensors/hals.conf
 
 # Telephony
 PRODUCT_PACKAGES += \
@@ -426,8 +521,8 @@ PRODUCT_PACKAGES += \
 
 # Video seccomp policy files
 PRODUCT_COPY_FILES += \
-	$(PLATFORM_PATH)/seccomp/mediacodec-seccomp.policy:$(TARGET_COPY_OUT_VENDOR)/etc/seccomp_policy/mediacodec.policy \
-	$(PLATFORM_PATH)/seccomp/mediaextractor-seccomp.policy:$(TARGET_COPY_OUT_VENDOR)/etc/seccomp_policy/mediaextractor.policy
+	$(DEVICE_PATH)/seccomp/mediacodec-seccomp.policy:$(TARGET_COPY_OUT_VENDOR)/etc/seccomp_policy/mediacodec.policy \
+	$(DEVICE_PATH)/seccomp/mediaextractor-seccomp.policy:$(TARGET_COPY_OUT_VENDOR)/etc/seccomp_policy/mediaextractor.policy
 
 # VNDK
 PRODUCT_PACKAGES += \
@@ -467,9 +562,9 @@ PRODUCT_PACKAGES += \
 	wpa_supplicant.conf
 
 PRODUCT_COPY_FILES += \
-	$(PLATFORM_PATH)/wifi/p2p_supplicant_overlay.conf:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/p2p_supplicant_overlay.conf \
-	$(PLATFORM_PATH)/wifi/wpa_supplicant_overlay.conf:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/wpa_supplicant_overlay.conf \
-	$(PLATFORM_PATH)/wifi/WCNSS_qcom_cfg.ini:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/WCNSS_qcom_cfg.ini
+	$(DEVICE_PATH)/wifi/p2p_supplicant_overlay.conf:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/p2p_supplicant_overlay.conf \
+	$(DEVICE_PATH)/wifi/wpa_supplicant_overlay.conf:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/wpa_supplicant_overlay.conf \
+	$(DEVICE_PATH)/wifi/WCNSS_qcom_cfg.ini:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/WCNSS_qcom_cfg.ini
 
 # XiaomiParts
 PRODUCT_PACKAGES += \

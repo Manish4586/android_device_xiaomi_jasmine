@@ -1,5 +1,5 @@
 #
-# Copyright (C) 2018 The Xiaomi-SDM660 Project
+# Copyright (C) 2018 The Xiaomi-SDMDEVICE_PATH Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -21,8 +21,46 @@
 # definition file).
 #
 
-# Platform Path
-PLATFORM_PATH := device/xiaomi/sdm660-common
+# Device Path
+DEVICE_PATH := device/xiaomi/jasmine_sprout
+
+# A/B
+AB_OTA_UPDATER := true
+BOARD_BUILD_SYSTEM_ROOT_IMAGE := true
+BOARD_USES_RECOVERY_AS_BOOT := true
+TARGET_NO_RECOVERY := true
+
+# DT2W
+TARGET_TAP_TO_WAKE_NODE := "/proc/nvt_wake_gesture"
+
+# Kernel
+TARGET_KERNEL_SOURCE := kernel/xiaomi/sdm660
+TARGET_KERNEL_CONFIG := jasmine-perf_defconfig
+
+# Manifest
+DEVICE_MANIFEST_FILE := $(DEVICE_PATH)/manifest.xml
+
+# Platform
+BOARD_VENDOR_PLATFORM := xiaomi-sdm660
+
+# Root Folders
+BOARD_ROOT_EXTRA_FOLDERS := persist
+
+# Vendor Security patch level
+VENDOR_SECURITY_PATCH := 2018-06-05
+
+# Vendor init
+TARGET_INIT_VENDOR_LIB := libinit_jasmine_sprout
+TARGET_RECOVERY_DEVICE_MODULES := libinit_jasmine_sprout
+
+# WLAN MAC
+WLAN_MAC_SYMLINK := true
+
+
+# TWRP Support
+ifeq ($(BUILD_TWRP),true)
+include $(DEVICE_PATH)/twrp.mk
+endif
 
 # Platform
 BOARD_VENDOR := xiaomi
@@ -103,7 +141,7 @@ AUDIO_DISABLE_SWAP_CHANNELS := true
 TARGET_USES_QCOM_MM_AUDIO := true
 
 # Bluetooth
-BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := $(PLATFORM_PATH)/bluetooth
+BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := $(DEVICE_PATH)/bluetooth
 BOARD_HAVE_BLUETOOTH := true
 BOARD_HAVE_BLUETOOTH_QCOM := true
 QCOM_BT_USE_BTNV := true
@@ -163,7 +201,7 @@ BOARD_USES_ADRENO := true
 TARGET_EXFAT_DRIVER := sdfat
 
 # Filesystem
-TARGET_FS_CONFIG_GEN := $(PLATFORM_PATH)/config.fs
+TARGET_FS_CONFIG_GEN := $(DEVICE_PATH)/config.fs
 
 # FM Radio
 AUDIO_FEATURE_ENABLED_FM_POWER_OPT := true
@@ -176,9 +214,9 @@ USE_DEVICE_SPECIFIC_GPS := true
 BOARD_VENDOR_QCOM_GPS_LOC_API_HARDWARE := $(TARGET_BOARD_PLATFORM)
 
 # HIDL Manifest
-DEVICE_MATRIX_FILE   := $(PLATFORM_PATH)/compatibility_matrix.xml
-DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE := $(PLATFORM_PATH)/vendor_framework_compatibility_matrix.xml
-DEVICE_FRAMEWORK_MANIFEST_FILE := $(PLATFORM_PATH)/framework_manifest.xml
+DEVICE_MATRIX_FILE   := $(DEVICE_PATH)/compatibility_matrix.xml
+DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE := $(DEVICE_PATH)/vendor_framework_compatibility_matrix.xml
+DEVICE_FRAMEWORK_MANIFEST_FILE := $(DEVICE_PATH)/framework_manifest.xml
 
 # HWUI
 HWUI_COMPILE_FOR_PERF := true
@@ -275,9 +313,9 @@ TARGET_QCOM_BLUETOOTH_VARIANT := caf-msm8998
 
 # Recovery FSTAB
 ifeq ($(AB_OTA_UPDATER), true)
-TARGET_RECOVERY_FSTAB := $(PLATFORM_PATH)/rootdir/etc/fstab_AB.qcom
+TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/rootdir/etc/fstab_AB.qcom
 else
-TARGET_RECOVERY_FSTAB := $(PLATFORM_PATH)/rootdir/etc/recovery.fstab
+TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/rootdir/etc/recovery.fstab
 endif
 TW_USE_TOOLBOX := true
 
@@ -287,11 +325,11 @@ ENABLE_VENDOR_RIL_SERVICE := true
 TARGET_USES_OLD_MNC_FORMAT := true
 
 # Seccomp Policy
-BOARD_SECCOMP_POLICY := $(PLATFORM_PATH)/seccomp
+BOARD_SECCOMP_POLICY := $(DEVICE_PATH)/seccomp
 
 # SELinux
 include device/qcom/sepolicy/sepolicy.mk
-BOARD_SEPOLICY_DIRS += $(PLATFORM_PATH)/sepolicy
+BOARD_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy
 SELINUX_IGNORE_NEVERALLOWS := true
 
 # Timeservice

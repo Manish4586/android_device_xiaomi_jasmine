@@ -23,6 +23,7 @@
 
 LOCAL_PATH := $(call my-dir)
 
+ifeq ($(TARGET_DEVICE),jasmine_sprout)
 ifeq ($(BOARD_VENDOR_PLATFORM),xiaomi-sdm660)
 include $(call all-makefiles-under,$(LOCAL_PATH))
 
