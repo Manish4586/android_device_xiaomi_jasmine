@@ -33,6 +33,8 @@ TARGET_HW_DISK_ENCRYPTION := true
 TARGET_TAP_TO_WAKE_NODE := "/sys/touchpanel/double_tap"
 
 # Kernel
+TARGET_KERNEL_CLANG_VERSION := r383902b
+TARGET_KERNEL_CLANG_COMPILE := true
 TARGET_KERNEL_SOURCE := kernel/xiaomi/sdm660
 TARGET_KERNEL_CONFIG := wayne_defconfig
 
@@ -48,7 +50,5 @@ VENDOR_SECURITY_PATCH := 2020-04-05
 # WLAN MAC
 WLAN_MAC_SYMLINK := true
 
--include device/twrp/jasmine_sprout/twrp.mk
+-include recovery/twrp/xiaomi/jasmine_sprout/twrp.mk
 
-# TWRP Support
-include $(DEVICE_PATH)/twrp.mk

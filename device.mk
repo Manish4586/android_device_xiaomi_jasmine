@@ -103,12 +103,3 @@ PRODUCT_SYSTEM_VERITY_PARTITION := /dev/block/platform/soc/c0c4000.sdhci/by-name
 PRODUCT_VENDOR_VERITY_PARTITION := /dev/block/platform/soc/c0c4000.sdhci/by-name/vendor
 $(call inherit-product, build/target/product/verity.mk)
 
-# Vendor files
-$(call inherit-product, vendor/xiaomi/wayne-common/wayne-common-vendor.mk)
-
-# AOSP DEVICE
-PRODUCT_NAME := aosp_jasmine_sprout
-PRODUCT_DEVICE := jasmine_sprout
-PRODUCT_MODEL := Mi A2 (AOSP)
-PRODUCT_BRAND := Xiaomi
-PRODUCT_MANUFACTURER := Xiaomi
