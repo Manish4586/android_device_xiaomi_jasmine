@@ -1,5 +1,4 @@
 #
-# Copyright (C) 2018 The LineageOS Project
 # Copyright (C) 2018 The Xiaomi-SDM660 Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -22,15 +21,36 @@
 # definition file).
 #
 
-include device/xiaomi/wayne-common/BoardConfigCommon.mk
+# Inherit device configuration
+$(call inherit-product, device/xiaomi/jasmine_sprout/device.mk)
 
-# Device Path
-DEVICE_PATH := device/xiaomi/jasmine_sprout
+# Inherit from those products. Most specific first.
+$(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
+$(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 
-# Manifest
-DEVICE_MANIFEST_FILE += $(DEVICE_PATH)/manifest.xml
+# Define first api level
+$(call inherit-product, $(SRC_TARGET_DIR)/product/product_launched_with_o_mr1.mk)
 
-# Properties
-TARGET_SYSTEM_PROP := $(DEVICE_PATH)/system.prop
+# Inherit aosp product configuration
+$(call inherit-product, vendor/aosp/config/common.mk)
 
--include recovery/twrp/xiaomi/jasmine_sprout/twrp.mk
+# Gapps
+USE_GAPPS := true
+IS_PHONE := true
+TARGET_GAPPS_ARCH := arm64
+TARGET_BOOT_ANIMATION_RES := 1080
+
+# Maintainer
+ROHIE_MAINTAINER := Manish4586
+ROHIE_BUILD_TYPE := OFFICIAL
+
+# Density
+TARGET_SCREEN_DENSITY := 480
+
+# Device identifier
+PRODUCT_BRAND := xiaomi
+PRODUCT_MANUFACTURER := Xiaomi
+PRODUCT_NAME := aosp_jasmine_sprout
+PRODUCT_DEVICE := jasmine_sprout
+PRODUCT_MODEL := Mi A2
+
